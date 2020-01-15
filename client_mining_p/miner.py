@@ -39,26 +39,6 @@ def valid_proof(block_string, proof):
     return guess_hash[:DIFFICULTY] == '0' * DIFFICULTY
 
 
-# def new_block(proof, previous_block):
-
-#     block = {
-#         'index': previous_block['index'] + 1,
-#         'timestamp': time.time(),
-#         'transactions': [],
-#         'proof': proof,
-#         'previous_hash': previous_block['previoius_hash']
-#     }
-
-#     return block
-
-
-# def hash(block):
-#     string_object = json.dumps(block, sort_keys=True).encode()
-#     raw_hash = hashlib.sha256(string_object)
-#     hex_hash = raw_hash.hexdigest()
-#     return hex_hash
-
-
 if __name__ == '__main__':
     # What is the server address? IE `python3 miner.py https://server.com/api/`
     if len(sys.argv) > 1:
