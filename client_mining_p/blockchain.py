@@ -164,7 +164,7 @@ def mine():
             code = 200
         else:
             response = {
-                'message': 'Please update the last block'
+                'message': 'Proof is not valid or already submitted'
             }
             code = 400
 
