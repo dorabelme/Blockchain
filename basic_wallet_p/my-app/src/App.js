@@ -52,25 +52,25 @@ function App() {
       }, 3000);
     }
     else {
+      const coins = getCoins(filteredChain, id)
+      console.log(coins);
+
       setState(
         {
           ...state,
           id,
           title: `${id}'s Transactions`,
           filteredChain,
-          warning: null
+          warning: null,
+          coins: coins
         }
       )
-      setTimeout(() => {
-        getCoins(id)
-      }, 500);
     }
   }
 
-  const getCoins = (id) => {
+  const getCoins = (filteredChain, id) => {
     let totalCoins = 0;
-    state.filteredChain.forEach(block => {
-      console.log("COINS FOREACH: ", block, id)
+    filteredChain.forEach(block => {
       if (block.transactions[0].recipient === id) {
         return totalCoins = block.transactions[0].amount + totalCoins
       }
@@ -78,19 +78,15 @@ function App() {
         return totalCoins -= block.transactions[0].amount
       }
     })
-    setState({ ...state, coins: totalCoins })
+
+    return totalCoins
   }
-
-  console.log("coinie", state.coins)
-
-
-
 
   return (
     <div className="App">
       <Form
         filterChain={filterChain}
-        getCoins={getCoins}
+      // getCoins={getCoins}
       />
       <h2>{state.warning}</h2>
       <Display

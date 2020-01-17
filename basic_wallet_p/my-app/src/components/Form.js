@@ -18,7 +18,7 @@ export default function Form({ filterChain, getCoins }) {
         } else {
             console.log(state.id)
             filterChain(state.id)
-            getCoins(state.id)
+            // getCoins(state.id)
         }
     }
 
